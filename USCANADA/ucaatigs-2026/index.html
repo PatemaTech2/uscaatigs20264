@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US–Canada–Africa Trade & Investment Global Summit (USCAATIGS 2026)</title>
+    <link rel="icon" type="image/jpeg" href="../logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-['Outfit'] bg-gradient-to-b from-[#F8F8F5] via-[#FAFAF7] to-[#F8F8F5] text-[#1A1A1A] overflow-x-hidden">
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 bg-transparent backdrop-blur-xl transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="logo-container">
+                    <span class="text-2xl md:text-3xl font-bold text-[#1A1A1A]">USCAATIGS 2026</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#hero" class="nav-link relative text-[#1A1A1A]/90 hover:text-[#1753ca] transition-colors duration-300 text-sm font-medium tracking-wide">Home</a>
+                    <a href="#about" class="nav-link relative text-[#1A1A1A]/90 hover:text-[#1753ca] transition-colors duration-300 text-sm font-medium tracking-wide">About</a>
+                    <a href="#video-section" class="nav-link relative text-[#1A1A1A]/90 hover:text-[#1753ca] transition-colors duration-300 text-sm font-medium tracking-wide">Video</a>
+                    <a href="#why-attend" class="nav-link relative text-[#1A1A1A]/90 hover:text-[#1753ca] transition-colors duration-300 text-sm font-medium tracking-wide">Why Attend</a>
+                    <a href="#opportunities" class="nav-link relative text-[#1A1A1A]/90 hover:text-[#1753ca] transition-colors duration-300 text-sm font-medium tracking-wide">Opportunities</a>
+                </div>                                                                                                                                                                                                                                                          
+                <button class="md:hidden text-[#1A1A1A] p-2" id="mobile-menu-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/98 backdrop-blur-xl border-t border-[#EAEAEA]">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#hero" class="block text-[#1A1A1A]/90 hover:text-[#1753ca] transition-colors py-2">Home</a>
+                <a href="#about" class="block text-[#1A1A1A]/90 hover:text-[#1753ca] transition-colors py-2">About</a>
+                <a href="#video-section" class="block text-[#1A1A1A]/90 hover:text-[#1753ca] transition-colors py-2">Video</a>
+                <a href="#why-attend" class="block text-[#1A1A1A]/90 hover:text-[#1753ca] transition-colors py-2">Why Attend</a>
+                <a href="#opportunities" class="block text-[#1A1A1A]/90 hover:text-[#1753ca] transition-colors py-2">Opportunities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Image Slider -->
+    <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Image Slider -->
+        <div class="absolute inset-0 z-0">
+            <div class="image-slider" id="image-slider">
+                <div class="slider-track" id="slider-track">
+                    <div class="slider-slide">
+                        <img src="../img1.jpg" alt="Image 1" class="w-full h-full object-cover">
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <div class="slider-slide">
+                        <img src="../img2.jpg" alt="Image 2" class="w-full h-full object-cover">
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <div class="slider-slide">
+                        <img src="../img3.jpg" alt="Image 3" class="w-full h-full object-cover">
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <div class="slider-slide">
+                        <img src="../img4.jpg" alt="Image 4" class="w-full h-full object-cover">
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <div class="slider-slide">
+                        <img src="../img5.jpg" alt="Image 5" class="w-full h-full object-cover">
+                        <div class="slide-overlay"></div>
+                    </div>
+                </div>
+            </div>
+<div class="absolute inset-0 bg-gradient-to-r from-[#1A1A1A]/10 via-[#F8F8F5]/5 to-[#1A1A1A]/10"></div>
+            <div class="absolute inset-0" id="particles"></div>
+        </div>
+        
+        <!-- Slider Controls -->
+        <div class="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-20 slider-controls">
+            <div class="slider-dots" id="slider-dots"></div>
+        </div>
+        
+        <button class="slider-arrow slider-arrow-left z-20" id="slider-prev">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+        <button class="slider-arrow slider-arrow-right z-20" id="slider-next">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+            <div class="hero-content">
+                <p class="text-[#d97706] text-sm md:text-base tracking-[0.3em] uppercase mb-4 opacity-0" id="hero-tagline">
+                    August 20–22, 2026 • Ethiopia
+                </p>
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold mb-2 text-[#1A1A1A] leading-tight">
+                    <span class="block opacity-0 translate-y-8" id="hero-title-1">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#1A1A1A] via-[#444444] to-[#1A1A1A]">United States</span>
+                    </span>
+                    <span class="block opacity-0 translate-y-8" id="hero-title-2">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#d97706]">Canada</span>
+                        <span class="text-[#1A1A1A]"> — Africa</span>
+                    </span>
+                    <span class="block opacity-0 translate-y-8" id="hero-title-3">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#d97706]">Trade & Investment</span>
+                    </span>
+                </h1>
+                <p class="text-xl sm:text-2xl md:text-3xl mb-8 text-[#444444] font-light opacity-0 translate-y-4" id="hero-subtitle">
+                    Exploring Trade & Investment Opportunities
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center opacity-0 translate-y-4" id="hero-buttons">
+                    <a href="https://www.facebook.com/share/1AfimDpBQ7/" target="_blank" class="social-btn inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-600/20 hover:bg-blue-600 transition-all duration-300 hover:scale-110">
+                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/uscaatigs26?igsh=MWppMzJxaGFudTNjNQ==" target="_blank" class="social-btn inline-flex items-center justify-center w-12 h-12 rounded-full bg-pink-600/20 hover:bg-pink-600 transition-all duration-300 hover:scale-110">
+                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+            <div class="scroll-indicator">
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="video-section" class="py-20 md:py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#FAFAF7] via-[#F8F8F5]/50 to-[#FAFAF7]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1A1A1A] mb-6">
+                    Experience the <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#d97706] to-[#f59e0b]">Summit</span>
+                </h2>
+                <p class="text-xl text-[#444444] max-w-2xl mx-auto">
+                    Join us for an unprecedented gathering of global leaders, innovators, and visionaries
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <!-- Video 1 -->
+                <div class="video-container relative rounded-2xl overflow-hidden shadow-xl shadow-[#d97706]/20" id="video-wrapper">
+                    <video id="summit-video" class="w-full aspect-video bg-[#F8F8F5]" preload="metadata" controls>
+                        <source src="../video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="text-center text-[#444444] mt-3 text-sm">Upcoming Event</p>
+                </div>
+                <!-- Video 2 -->
+                <div class="video-container relative rounded-2xl overflow-hidden shadow-xl shadow-[#d97706]/20" id="video-wrapper-2">
+                    <video id="summit-video-2" class="w-full aspect-video bg-[#F8F8F5]" preload="metadata" controls>
+                        <source src="../video2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="text-center text-[#444444] mt-3 text-sm">The last event in Zimbabwe</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section with Professional Introduction -->
+    <section id="about" class="py-20 md:py-32 px-4 sm:px-6 lg:px-8 relative">
+        <div class="absolute inset-0 bg-[#FAFAF7]/50"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1A1A1A] mb-6">
+                    About <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#d97706] to-[#f59e0b]">USCAATIGS 2026</span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-[#d97706] to-[#f59e0b] mx-auto mb-8"></div>
+            </div>
+            
+            <!-- Professional Introduction -->
+            <div class="glass-card-enhanced p-8 md:p-12 mb-16 max-w-4xl mx-auto">
+                <h3 class="text-2xl md:text-3xl font-semibold text-[#1753ca] mb-6 font-['Playfair_Display']">
+                    Building Bridges Across Continents
+                </h3>
+                <p class="text-lg text-[#444444] leading-relaxed mb-6">
+                    The <strong class="text-[#1A1A1A]">United States, Canada, Africa Trade & Investment Global Summit (USCAATIGS 2026)</strong> represents a landmark initiative
+                </p>
+                <p class="text-lg text-[#444444] leading-relaxed mb-6">
+                    Set against the vibrant backdrop of <strong class="text-[#1A1A1A]">Ethiopia</strong>
+                </p>
+                <div class="grid md:grid-cols-2 gap-6 mt-8">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-[#d97706]/20 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-[#1A1A1A] font-semibold mb-1">Promoting Trade Partnerships</h4>
+                            <p class="text-[#666666] text-sm">Facilitating cross-border trade agreements and commercial relationships</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-[#d97706]/20 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-[#1A1A1A] font-semibold mb-1">Investment Opportunities</h4>
+                            <p class="text-[#666666] text-sm">Connecting investors with high-potential ventures across sectors</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-[#d97706]/20 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-[#1A1A1A] font-semibold mb-1">Global Collaboration</h4>
+                            <p class="text-[#666666] text-sm">Building networks that transcend geographical boundaries</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-[#d97706]/20 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-[#1A1A1A] font-semibold mb-1">Economic Growth & Innovation</h4>
+                            <p class="text-[#666666] text-sm">Driving sustainable development through innovation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- USA-Africa Partnership Image -->
+            <div class="mt-12 mb-16 flex justify-center items-center gap-6">
+                <img src="../uca.jpg" alt="UCA" class="h-16 md:h-20 w-auto rounded-lg shadow-lg shadow-[#d97706]/20">
+                <img src="../catigs2026.jpg" alt="USCAATIGS 2026" class="h-16 md:h-20 w-auto rounded-lg shadow-lg shadow-[#d97706]/20">
+            </div>
+
+            <!-- Hosted By -->
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 mt-12">
+                <div class="text-center">
+                    <p class="text-[#666666] text-sm uppercase tracking-wider mb-3">Hosted By</p>
+                    <div class="flex items-center gap-4">
+                        <img src="../atescalogo.jpg" alt="ATESCA" class="h-16 md:h-20 w-auto rounded-lg">
+                        <div class="text-left">
+                            <p class="text-[#1A1A1A] font-semibold">ATESCA</p>
+                            <p class="text-[#666666] text-sm">Africa Trade & Economic</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block w-px h-16 bg-[#EAEAEA]"></div>
+                <div class="text-center">
+                    <p class="text-[#666666] text-sm uppercase tracking-wider mb-3">In Partnership With</p>
+                    <div class="flex items-center gap-4 justify-center flex-col">
+                        <img src="../usaafrica.jpg" alt="USA-Africa Partnership" class="h-24 md:h-28 w-auto rounded-lg shadow-lg">
+                        <div class="text-left">
+                            <p class="text-[#1A1A1A] font-semibold text-lg">U.S.-Africa Trade Commission (USAfriTrade)</p>
+                            <p class="text-[#666666] text-sm">Promoting bilateral trade & investment</p>
+                        </div>
+                    </div>
+                    <!-- USAfriTrade Detailed Information -->
+                    <div class="mt-8 glass-card-enhanced p-6 md:p-8 text-left max-w-3xl mx-auto">
+                        <p class="text-lg text-[#444444] leading-relaxed mb-4">
+                            The U.S.-Africa Trade Commission (USAfriTrade) is dedicated to strengthening trade and investment relationships between the United States and African nations. Through policy advocacy, market access support, and strategic partnerships, USAfriTrade facilitates sustainable economic growth and development across the continent.
+                        </p>
+                        <p class="text-lg text-[#444444] leading-relaxed">
+                            USAfriTrade works tirelessly to create opportunities for American businesses seeking to expand into African markets while supporting African nations in their economic development goals.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Attend Section -->
+    <section id="why-attend" class="py-20 md:py-32 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-slate-100 via-white to-slate-100">
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1A1A1A] mb-6">
+                    Why <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-yellow-500">Attend</span>
+                </h2>
+                <p class="text-xl text-[#444444] max-w-3xl mx-auto">
+                    Join thousands of decision-makers
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-card-enhanced p-8 text-center group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-amber-500/20 group-hover:shadow-amber-500/40 transition-shadow">
+                        <svg class="w-8 h-8 text-slate-900" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-[#1A1A1A] mb-3">Networking</h3>
+                    <p class="text-[#444444]">Connect with global leaders and potential partners from three continents</p>
+                </div>
+                <div class="glass-card-enhanced p-8 text-center group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-amber-500/20 group-hover:shadow-amber-500/40 transition-shadow">
+                        <svg class="w-8 h-8 text-slate-900" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-[#1A1A1A] mb-3">Insights</h3>
+                    <p class="text-[#444444]">Gain valuable market intelligence and emerging trends</p>
+                </div>
+                <div class="glass-card-enhanced p-8 text-center group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-amber-500/20 group-hover:shadow-amber-500/40 transition-shadow">
+                        <svg class="w-8 h-8 text-slate-900" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v3a1 1 0 102 0v-3zm2-3a1 1 0 011 1v5a1 1 0 11-2 0v-5a1 1 0 011-1zm4-1a1 1 0 10-2 0v7a1 1 0 102 0V8z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-[#1A1A1A] mb-3">Opportunities</h3>
+                    <p class="text-[#444444]">Discover new business and investment opportunities</p>
+                </div>
+                <div class="glass-card-enhanced p-8 text-center group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-amber-500/20 group-hover:shadow-amber-500/40 transition-shadow">
+                        <svg class="w-8 h-8 text-slate-900" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-[#1A1A1A] mb-3">Knowledge</h3>
+                    <p class="text-[#444444]">Learn from expert speakers and thought leaders</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Opportunities Section -->
+    <section id="opportunities" class="py-20 md:py-32 px-4 sm:px-6 lg:px-8 relative bg-white">
+        <div class="absolute inset-0 bg-white"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6">
+                    Key <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-yellow-500">Opportunities</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Explore the vast potential
+                </p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="glass-card-enhanced p-8 md:p-10 group hover:border-amber-400/30 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-amber-500">Trade & Commerce</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Access to new markets and trade corridors</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="glass-card-enhanced p-8 md:p-10 group hover:border-amber-400/30 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-amber-500">Agriculture & Agribusiness</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Food security initiatives and sustainable farming</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Agro-processing and value chain development</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Technology transfer in agricultural innovation</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="glass-card-enhanced p-8 md:p-10 group hover:border-amber-400/30 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-amber-500">Technology & Innovation</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Digital transformation and ICT infrastructure</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Startup ecosystems and venture capital</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Artificial intelligence and emerging technologies</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="glass-card-enhanced p-8 md:p-10 group hover:border-amber-400/30 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-amber-500">Energy & Infrastructure</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Renewable energy projects and clean tech</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Transportation and logistics networks</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Smart cities and urban development</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white backdrop-blur-xl border-t border-gray-200 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h4 class="text-xl font-semibold text-amber-500 mb-4">Contact Us</h4>
+                    <p class="text-gray-600 mb-4">For inquiries and registration information, please contact us at:</p>
+                    <a href="mailto:uscaatigs26@gmail.com" class="text-gray-800 hover:text-amber-500 transition-colors duration-300 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        uscaatigs26@gmail.com
+                    </a>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold text-amber-500 mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#hero" class="text-gray-600 hover:text-amber-500 transition-colors duration-300">Home</a></li>
+                        <li><a href="#about" class="text-gray-600 hover:text-amber-500 transition-colors duration-300">About</a></li>
+                        <li><a href="#why-attend" class="text-gray-600 hover:text-amber-500 transition-colors duration-300">Why Attend</a></li>
+                        <li><a href="#opportunities" class="text-gray-600 hover:text-amber-500 transition-colors duration-300">Opportunities</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold text-amber-500 mb-4">Follow Us</h4>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/share/1AfimDpBQ7/" target="_blank" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center hover:bg-blue-600 transition-all duration-300">
+                            <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/uscaatigs26?igsh=MWppMzJxaGFudTNjNQ==" target="_blank" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 transition-all duration-300">
+                            <svg class="w-5 h-5 text-black hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 pt-8 text-center">
+                <p class="text-gray-500 text-sm">© 2026 USCAATIGS. All rights reserved.</p>
+            </div>
+        </div>
+    <script src="script.js"></script>
+</body>
+</html>
