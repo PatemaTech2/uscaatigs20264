@@ -15,11 +15,11 @@
     --color-royal-blue: #3b82f6;
     
     /* Gold/Amber Scale */
-    --color-gold: #d97706;
-    --color-gold-light: #f59e0b;
-    --color-gold-dark: #b45309;
-    --color-gold-amber: #f59e0b;
-    --color-gold-amber-light: #fbbf24;
+    --color-gold: #FFD700;
+    --color-gold-light: #FFD700;
+    --color-gold-dark: #B8860B;
+    --color-gold-amber: #FFD700;
+    --color-gold-amber-light: #FFD700;
     
     /* Off-White Background Colors - NEW */
     --color-bg-light: #F8F8F5;
@@ -169,14 +169,14 @@ body.dark .slide-overlay {
 body.dark #hero-title-1 span,
 body.dark #hero-title-2 span,
 body.dark #hero-title-3 span {
-    background: linear-gradient(to right, #ffffff, #e5e5e5, #ffffff) !important;
+    background: linear-gradient(to right, #FFD700, #FFD700, #FFD700) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
 }
 
 body.dark #hero-subtitle {
-    color: #e5e5e5 !important;
+    color: #FFD700 !important;
 }
 
 /* Dark Mode Slider Controls */
@@ -436,7 +436,7 @@ body.dark .section-divider {
 
 /* Dark Mode Mobile Menu Button */
 body.dark #mobile-menu-btn {
-    color: #ffffff !important;
+    color: #FFD700 !important;
 }
 
 /* Dark Mode CTA Buttons */
@@ -457,7 +457,7 @@ body.dark .absolute.inset-0.bg-gradient-to-r {
 
 /* Dark Mode Tagline */
 body.dark #hero-tagline {
-    color: #f59e0b !important;
+    color: #FFD700 !important;
 }
 
 /* Smooth transition for theme changes */
@@ -792,16 +792,23 @@ p, span, li {
     transform: translateY(30px);
 }
 
-/* Hero Title Colors - Dark theme for light background */
+/* Hero Title Colors - Gold for slider/background images */
+#hero-tagline {
+    color: #FFD700 !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
 #hero-title-1 span,
 #hero-title-2 span,
 #hero-title-3 span {
-    color: var(--color-text-dark);
+    color: #FFD700 !important;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4), 0 4px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* Hero Subtitle */
+/* Hero Subtitle - Gold */
 #hero-subtitle {
-    color: var(--color-text-medium);
+    color: #FFD700 !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* CTA Buttons */
@@ -1229,6 +1236,15 @@ footer {
     position: relative;
     background: #ffffff;
     border-top: 1px solid var(--color-divider);
+}
+
+/* Footer email centering */
+footer .grid > div:first-child {
+    text-align: center;
+}
+
+footer .grid > div:first-child a {
+    justify-content: center;
 }
 
 footer::before {
