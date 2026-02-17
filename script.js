@@ -8,6 +8,7 @@ heroTimeline
     .to("#hero-title-1", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" })
     .to("#hero-title-2", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, "-=0.4")
     .to("#hero-title-3", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, "-=0.4")
+    .to("#hero-title-4", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, "-=0.4")
     .to("#hero-subtitle", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.3")
     .to("#hero-buttons", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.3");
 
