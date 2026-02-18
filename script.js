@@ -50,11 +50,13 @@ gsap.utils.toArray('.glass-card').forEach((card, i) => {
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
-        navbar.classList.add('bg-slate-900/95');
+        navbar.classList.add('bg-white/95');
+        navbar.classList.add('shadow-md');
         navbar.classList.remove('bg-transparent');
     } else {
         navbar.classList.add('bg-transparent');
-        navbar.classList.remove('bg-slate-900/95');
+        navbar.classList.remove('bg-white/95');
+        navbar.classList.remove('shadow-md');
     }
 });
 

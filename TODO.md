@@ -1,32 +1,26 @@
-# USCAATIGS 2026 Website Upgrade Plan
+# TODO - Dark Theme Fix
 
-## Phase 1: Update styles.css
-- [ ] Add comprehensive modern CSS with glassmorphism effects
-- [ ] Add custom animations and transitions
-- [ ] Add premium UI components styling
+## Task
+Fix all errors with the dark theme - background color and text don't look the same in dark mode
 
-## Phase 2: Enhance Image Slider
-- [ ] Update slider to use correct images (ucalogo.jpg, uca.jpg, atescalogo.jpg)
-- [ ] Implement GSAP-powered auto-scroll
-- [ ] Add touch swipe support for mobile
-- [ ] Add pause on hover functionality
-- [ ] Add elegant UI indicators (dots + arrows)
+## Issues Identified
+1. Body tag has hardcoded background gradient (`from-[#F8F8F5] via-[#FAFAF7] to-[#F8F8F5]`) and text color (`text-[#1A1A1A]`)
+2. Many elements have hardcoded colors like `text-[#1A1A1A]`, `bg-white`, `bg-gray-200`
+3. Some sections have hardcoded gradients that don't adapt to dark mode
 
-## Phase 3: Add Missing Sections
-- [ ] Event Schedule section
-- [ ] Speakers section
-- [ ] Partners & Sponsors section
-- [ ] Registration CTA section
-- [ ] Footer section
+## Fix Plan
+- [ ] Fix body tag background and text colors for dark mode
+- [ ] Fix navbar colors for dark mode
+- [ ] Fix hero section colors for dark mode
+- [ ] Fix video section colors for dark mode
+- [ ] Fix about section colors for dark mode
+- [ ] Fix why-attend section colors for dark mode
+- [ ] Fix opportunities section colors for dark mode
+- [ ] Fix footer colors for dark mode
+- [ ] Fix hardcoded gradients in various sections
 
-## Phase 4: Enhance script.js
-- [ ] Enhanced GSAP animations for all sections
-- [ ] Improved slider functionality
-- [ ] Scroll-triggered animations
-- [ ] Smooth page load transitions
-- [ ] Interactive card effects
-
-## Phase 5: Testing & Optimization
-- [ ] Verify responsive design
-- [ ] Check all animations work smoothly
-- [ ] Ensure no layout breaks
+## Progress
+- [ ] Read and analyze existing files (styles.css, index.html, script.js)
+- [ ] Update index.html - remove hardcoded colors from body tag
+- [ ] Update styles.css - add comprehensive dark mode overrides
+- [ ] Test dark mode functionality

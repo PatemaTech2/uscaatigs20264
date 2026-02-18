@@ -168,15 +168,16 @@ body.dark .slide-overlay {
 /* Dark Mode Hero Titles */
 body.dark #hero-title-1 span,
 body.dark #hero-title-2 span,
-body.dark #hero-title-3 span {
-    background: linear-gradient(to right, #FFD700, #FFD700, #FFD700) !important;
+body.dark #hero-title-3 span,
+body.dark #hero-title-4 span {
+    background: linear-gradient(to right, #000000, #000000, #000000) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
 }
 
 body.dark #hero-subtitle {
-    color: #FFD700 !important;
+    color: #000000 !important;
 }
 
 /* Dark Mode Slider Controls */
@@ -457,7 +458,7 @@ body.dark .absolute.inset-0.bg-gradient-to-r {
 
 /* Dark Mode Tagline */
 body.dark #hero-tagline {
-    color: #FFD700 !important;
+    color: #000000 !important;
 }
 
 /* Smooth transition for theme changes */
@@ -792,22 +793,23 @@ p, span, li {
     transform: translateY(30px);
 }
 
-/* Hero Title Colors - Gold for slider/background images */
+/* Hero Title Colors - Black for slider/background images */
 #hero-tagline {
-    color: #FFD700 !important;
+    color: #000000 !important;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 #hero-title-1 span,
 #hero-title-2 span,
-#hero-title-3 span {
-    color: #FFD700 !important;
+#hero-title-3 span,
+#hero-title-4 span {
+    color: #000000 !important;
     text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4), 0 4px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* Hero Subtitle - Gold */
+/* Hero Subtitle - Black */
 #hero-subtitle {
-    color: #FFD700 !important;
+    color: #000000 !important;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
