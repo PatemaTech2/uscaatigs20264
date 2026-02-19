@@ -108,10 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             nav.classList.add('py-4');
-            nav.querySelector('.max-w-7xl').classList.add('bg-white/95');
         } else {
             nav.classList.remove('py-4');
-            nav.querySelector('.max-w-7xl').classList.remove('bg-white/95');
         }
     });
 
