@@ -1,6 +1,26 @@
 // GSAP Registration
 gsap.registerPlugin(ScrollTrigger);
 
+// Mobile Menu Toggle Function
+function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const spans = menuBtn.querySelectorAll('span');
+    
+    mobileMenu.classList.toggle('hidden');
+    
+    // Animate hamburger to X
+    if (!mobileMenu.classList.contains('hidden')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+    } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+    }
+}
+
 // Hero Animations
 const heroTimeline = gsap.timeline();
 
