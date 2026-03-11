@@ -9,54 +9,128 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Mobile menu animation */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            transform-origin: top;
+        }
+        #mobile-menu.hidden { 
+            transform: scaleY(0); 
+            opacity: 0;
+        }
+        #mobile-menu:not(.hidden) { 
+            transform: scaleY(1); 
+            opacity: 1;
+        }
+        
+        /* Hero text responsive */
+        @media (max-width: 640px) {
+            .hero-title { font-size: 2rem !important; line-height: 1.1 !important; }
+            .hero-subtitle { font-size: 1rem !important; }
+            .section-padding { padding: 3rem 1rem !important; }
+        }
+        @media (min-width: 641px) and (max-width: 768px) {
+            .hero-title { font-size: 2.5rem !important; }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-title { font-size: 3.5rem !important; }
+        }
+        @media (min-width: 1025px) {
+            .hero-title { font-size: 4.5rem !important; }
+        }
+        
+        /* Card hover effects */
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        /* Section backgrounds */
+        .section-gray { background-color: #f9fafb; }
+        .section-white { background-color: #ffffff; }
+        .section-dark { background-color: #111827; }
+        
+        /* Gradient text */
+        .text-gradient {
+            background: linear-gradient(to right, #d97706, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
 </head>
-<body class="bg-white overflow-x-hidden font-['Plus_Jakarta_Sans']">
+<body class="bg-gray-50 overflow-x-hidden">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 px-4 sm:px-6 py-4 sm:py-6 transition-all duration-500" id="main-nav">
-        <div class="max-w-7xl mx-auto flex justify-between items-center bg-white border border-white/20 px-4 sm:px-8 py-3 sm:py-4 rounded-full shadow-2xl">
-            <div class="flex items-center gap-3">
-                <img src="../ucalogo.jpg" alt="USCAATIGS Logo" class="h-8 sm:h-12 w-auto">
-                <div class="flex flex-col justify-center">
-                    <span class="text-lg sm:text-2xl font-black tracking-tighter text-[#1A1A1A] font-['Playfair_Display'] leading-none">USCAATIGS <span class="text-[#d97706]">2026</span></span>
-                    <span class="text-[9px] font-bold uppercase tracking-tight text-[#666666] mt-1 lg:hidden">Trade & Investment Global Summit</span>
-                    <span class="text-[10px] sm:text-[11px] lg:text-[12px] font-bold uppercase tracking-tight sm:tracking-[0.2em] text-[#666666] mt-0.5 sm:mt-1 hidden lg:block">United States, Canada, Africa Trade & Investment Global Summit</span>
+    <nav class="fixed w-full z-50 transition-all duration-300" id="main-nav">
+        <div class="bg-white/95 backdrop-blur-md shadow-lg mx-2 mt-2 rounded-2xl">
+            <div class="max-w-7xl mx-auto px-3 py-3 flex justify-between items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-2">
+                    <img src="../ucalogo.jpg" alt="USCAATIGS Logo" class="h-8 sm:h-10 w-auto">
+                    <div class="flex flex-col">
+                        <span class="text-lg sm:text-xl font-black tracking-tight text-gray-900 font-['Playfair_Display']">USCAATIGS <span class="text-amber-600">2026</span></span>
+                        <span class="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider text-gray-500 hidden xs:block">Trade & Investment Summit</span>
+                    </div>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-4 xl:gap-6">
+                    <a href="#hero" class="text-xs font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600 transition px-2 py-1">Home</a>
+                    <a href="#why-matters" class="text-xs font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600 transition px-2 py-1">Why Attend</a>
+                    <a href="#priority-sectors" class="text-xs font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600 transition px-2 py-1">Sectors</a>
+                    <a href="program.html" class="text-xs font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600 transition px-2 py-1">Program</a>
+                    <a href="sponsors.html" class="text-xs font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600 transition px-2 py-1">Sponsors</a>
+                    <a href="faq.html" class="text-xs font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600 transition px-2 py-1">FAQ</a>
+                    <a href="contact.html" class="text-xs font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600 transition px-2 py-1">Contact</a>
+                    <a href="registration.html" class="px-4 py-2 bg-amber-600 text-white text-xs font-bold uppercase tracking-wider rounded-full hover:bg-amber-700 transition">Register</a>
                 </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" id="menu-icon"></path>
+                    </svg>
+                </button>
             </div>
-            <div class="hidden md:flex items-center gap-6 lg:gap-10">
-                <a href="#hero" class="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#d97706] transition-colors">Home</a>
-                <a href="#about" class="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#d97706] transition-colors">About</a>
-                <a href="#video-section" class="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#d97706] transition-colors">Video</a>
-                <a href="#contacts" class="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#d97706] transition-colors">Leadership</a>
-            </div>
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" onclick="toggleMobileMenu()">
-                <span class="w-6 h-0.5 bg-[#1A1A1A] transition-all duration-300"></span>
-                <span class="w-6 h-0.5 bg-[#1A1A1A] transition-all duration-300"></span>
-                <span class="w-6 h-0.5 bg-[#1A1A1A] transition-all duration-300"></span>
-            </button>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden absolute top-full left-0 right-0 px-4 py-4">
-            <div class="bg-white rounded-2xl shadow-2xl border border-white/20 p-6 flex flex-col gap-4">
-                <a href="#hero" class="text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#d97706] transition-colors py-2" onclick="toggleMobileMenu()">Home</a>
-                <a href="#about" class="text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#d97706] transition-colors py-2" onclick="toggleMobileMenu()">About</a>
-                <a href="#video-section" class="text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#d97706] transition-colors py-2" onclick="toggleMobileMenu()">Video</a>
-                <a href="#contacts" class="text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#d97706] transition-colors py-2" onclick="toggleMobileMenu()">Leadership</a>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white mx-2 rounded-b-2xl shadow-lg">
+            <div class="px-4 py-4 flex flex-col gap-2">
+                <a href="#hero" class="text-sm font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600 transition py-2" onclick="toggleMobileMenu()">Home</a>
+                <a href="#why-matters" class="text-sm font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600 transition py-2" onclick="toggleMobileMenu()">Why Attend</a>
+                <a href="#priority-sectors" class="text-sm font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600 transition py-2" onclick="toggleMobileMenu()">Sectors</a>
+                <a href="program.html" class="text-sm font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600 transition py-2" onclick="toggleMobileMenu()">Program</a>
+                <a href="sponsors.html" class="text-sm font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600 transition py-2" onclick="toggleMobileMenu()">Sponsors</a>
+                <a href="faq.html" class="text-sm font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600 transition py-2" onclick="toggleMobileMenu()">FAQ</a>
+                <a href="contact.html" class="text-sm font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600 transition py-2" onclick="toggleMobileMenu()">Contact</a>
+                <a href="registration.html" class="mt-2 px-4 py-3 bg-amber-600 text-white text-sm font-bold uppercase tracking-wider rounded-full text-center hover:bg-amber-700 transition">Register Now</a>
             </div>
         </div>
     </nav>
 
-    <!-- Spacer to prevent content from being hidden behind fixed navbar -->
-    <div class="h-24"></div>
+    <!-- Spacer -->
+    <div class="h-20"></div>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#FAFAFA]">
+    <section id="hero" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gray-100">
+        <!-- Background Slider -->
         <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-transparent z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-white/90 via-white/70 to-white/90 z-10"></div>
             <div class="slider-container h-full w-full">
                 <div class="slide absolute inset-0 opacity-100 transition-opacity duration-1000">
-                    <img src="../slide.jpg" alt="Business Summit" class="w-full h-full object-cover">
+                    <img src="../slide.jpg" alt="Summit" class="w-full h-full object-cover">
                 </div>
                 <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000">
                     <img src="../slide2.jpg" alt="Networking" class="w-full h-full object-cover">
@@ -64,389 +138,335 @@
                 <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000">
                     <img src="../slide3.jpg" alt="Investment" class="w-full h-full object-cover">
                 </div>
-                <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-                    <img src="../slide4.jpg" alt="Global Trade" class="w-full h-full object-cover">
-                </div>
-                <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-                    <img src="../slide5.jpg" alt="Leadership" class="w-full h-full object-cover">
-                </div>
             </div>
         </div>
 
-        <div class="relative z-20 max-w-7xl mx-auto px-6 pt-20 text-center">
-            <p class="lg:hidden text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#666666] mb-6 max-w-md mx-auto">
-                United States, Canada, Africa Trade & Investment Global Summit
-            </p>
-            <div class="inline-block mb-8">
-                <div class="flex items-center gap-4 bg-[#1A1A1A] text-white px-4 sm:px-6 py-2 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-[0.1em] sm:tracking-[0.3em]">
-                    <span class="w-2 h-2 rounded-full bg-[#d97706] animate-pulse"></span>
-                    August 20–22, 2026 | Ethiopia
-                </div>
+        <div class="relative z-20 max-w-6xl mx-auto px-4 text-center pt-12">
+            <!-- Date Badge -->
+            <div class="inline-flex items-center gap-2 bg-gray-900 text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+                <span class="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></span>
+                August 20–22, 2026 | Ethiopia
             </div>
             
-            <h1 class="text-4xl sm:text-6xl md:text-8xl font-black text-[#1A1A1A] tracking-tighter mb-8 leading-[0.9] font-['Playfair_Display']">
-                Exploring Trade & <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#d97706] to-[#b45309]">Investment</span> Opportunities
+            <!-- Hero Title -->
+            <h1 class="hero-title font-black text-gray-900 tracking-tight mb-6 font-['Playfair_Display']">
+                Mobilizing Capital,<br>
+                <span class="text-gradient">Trade</span> & Strategic<br>
+                Partnerships
             </h1>
 
-            <div class="flex flex-col md:flex-row items-center justify-center gap-12 mt-12 mb-16">
-                <div class="flex flex-col items-center">
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-[#666666] mb-4">Hosted By</p>
-                    <img src="../usaafrica.jpg" alt="U.S.-Africa Trade Commission" class="h-20 md:h-24 w-auto">
+            <!-- Subtitle -->
+            <p class="hero-subtitle text-gray-600 max-w-2xl mx-auto mb-8">
+                USCAATIGS 2026 convenes ministers, development finance institutions, institutional investors, global corporates, and sector leaders.
+            </p>
+
+            <!-- Partner Logos -->
+            <div class="flex flex-wrap items-center justify-center gap-4 md:gap-8 mb-8">
+                <div class="text-center">
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2">Hosted By</p>
+                    <img src="../usaafrica.jpg" alt="USAfriTrade" class="h-12 md:h-16 mx-auto">
                 </div>
-                <div class="w-px h-12 bg-gray-200 hidden md:block"></div>
-                <div class="flex flex-col items-center">
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-[#666666] mb-4"></p>
-                    <img src="../ucalogo.jpg" alt="UCA" class="h-16 md:h-20 w-auto">
+                <div class="w-px h-8 bg-gray-300 hidden md:block"></div>
+                <div class="text-center">
+                    <img src="../ucalogo.jpg" alt="UCA" class="h-10 md:h-14 mx-auto">
                 </div>
-                <div class="w-px h-12 bg-gray-200 hidden md:block"></div>
-                <div class="flex flex-col items-center">
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-[#666666] mb-4">In Partnership With</p>
-                    <img src="../atescalogo.jpg" alt="ATESCA" class="h-16 md:h-20 w-auto">
+                <div class="w-px h-8 bg-gray-300 hidden md:block"></div>
+                <div class="text-center">
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2">In Partnership</p>
+                    <img src="../atescalogo.jpg" alt="ATESCA" class="h-10 md:h-14 mx-auto">
                 </div>
             </div>
 
-            <p class="text-xl text-[#444444] max-w-2xl mx-auto mb-12 font-medium leading-relaxed">
-                The premier tri-continental summit uniting leaders from the United States, Canada, and Africa for transformative economic growth.
-            </p>
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+                <a href="registration.html" class="w-full sm:w-auto px-6 py-3 bg-amber-600 text-white font-bold uppercase tracking-wider text-xs rounded-full hover:bg-amber-700 transition shadow-lg hover:shadow-xl">Register Now</a>
+                <a href="sponsors.html" class="w-full sm:w-auto px-6 py-3 border-2 border-gray-900 text-gray-900 font-bold uppercase tracking-wider text-xs rounded-full hover:bg-gray-900 hover:text-white transition">Become a Sponsor</a>
+            </div>
+        </div>
 
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a href="#video-section" class="px-10 py-5 border-2 border-[#1A1A1A] text-[#1A1A1A] rounded-full font-bold uppercase tracking-widest text-sm hover:bg-[#1A1A1A] hover:text-white transition-all duration-500">
-                    Watch Video
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2">
+            <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center pt-1">
+                <div class="w-1 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why This Summit Matters -->
+    <section id="why-matters" class="py-16 md:py-24 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <p class="text-xs font-bold text-amber-600 uppercase tracking-[0.3em] mb-3">Why This Summit Matters</p>
+                <h2 class="text-2xl md:text-4xl font-black text-gray-900 font-['Playfair_Display']">Not Just Networking. <span class="text-amber-600">Economic Transformation.</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="feature-card bg-gray-50 p-6 rounded-2xl">
+                    <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Policy Dialogue</h3>
+                    <p class="text-sm text-gray-600">Engage directly with government leaders on trade frameworks.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="feature-card bg-gray-50 p-6 rounded-2xl">
+                    <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Investment Sessions</h3>
+                    <p class="text-sm text-gray-600">Pre-screened, investment-ready projects from across Africa.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="feature-card bg-gray-50 p-6 rounded-2xl">
+                    <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Deal Rooms</h3>
+                    <p class="text-sm text-gray-600">Private 1-on-1 meetings with vetted investors.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="feature-card bg-gray-50 p-6 rounded-2xl">
+                    <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Pre-screened Projects</h3>
+                    <p class="text-sm text-gray-600">Rigorous financial and ESG due diligence.</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="feature-card bg-gray-50 p-6 rounded-2xl">
+                    <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Cross-border Partnerships</h3>
+                    <p class="text-sm text-gray-600">Strategic partnerships across three continents.</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="feature-card bg-gray-50 p-6 rounded-2xl">
+                    <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Investment Commitments</h3>
+                    <p class="text-sm text-gray-600">Concrete deals, not just handshakes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Priority Sectors -->
+    <section id="priority-sectors" class="py-16 md:py-24 px-4 bg-gray-900 text-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <p class="text-xs font-bold text-amber-500 uppercase tracking-[0.3em] mb-3">Priority Sectors</p>
+                <h2 class="text-2xl md:text-4xl font-black font-['Playfair_Display']">High-Growth <span class="text-amber-500">Capital-Ready</span> Sectors</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 hover:border-amber-500 transition">
+                    <h3 class="font-bold text-white mb-2">Energy & Transition</h3>
+                    <p class="text-xs text-gray-400">Renewable financing, grid modernization</p>
+                </div>
+                <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 hover:border-amber-500 transition">
+                    <h3 class="font-bold text-white mb-2">Infrastructure</h3>
+                    <p class="text-xs text-gray-400">Corridors, industrial parks, logistics</p>
+                </div>
+                <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 hover:border-amber-500 transition">
+                    <h3 class="font-bold text-white mb-2">Mining & Minerals</h3>
+                    <p class="text-xs text-gray-400">Responsible extraction, processing</p>
+                </div>
+                <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 hover:border-amber-500 transition">
+                    <h3 class="font-bold text-white mb-2">Agribusiness</h3>
+                    <p class="text-xs text-gray-400">Agro-processing, food security</p>
+                </div>
+                <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 hover:border-amber-500 transition">
+                    <h3 class="font-bold text-white mb-2">Manufacturing</h3>
+                    <p class="text-xs text-gray-400">Industrial parks, value chains</p>
+                </div>
+                <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 hover:border-amber-500 transition">
+                    <h3 class="font-bold text-white mb-2">Digital Economy</h3>
+                    <p class="text-xs text-gray-400">Fintech, digital payments</p>
+                </div>
+                <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 hover:border-amber-500 transition">
+                    <h3 class="font-bold text-white mb-2">Healthcare</h3>
+                    <p class="text-xs text-gray-400">Local production, supply chains</p>
+                </div>
+                <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 hover:border-amber-500 transition">
+                    <h3 class="font-bold text-white mb-2">Trade & Export</h3>
+                    <p class="text-xs text-gray-400">SME expansion, AfCFTA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who Attends -->
+    <section id="who-attends" class="py-16 md:py-24 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <p class="text-xs font-bold text-amber-600 uppercase tracking-[0.3em] mb-3">Who Attends</p>
+                <h2 class="text-2xl md:text-4xl font-black text-gray-900 font-['Playfair_Display']">A <span class="text-amber-600">Decision-Maker</span> Audience</h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900">Ministers</h3>
+                    <p class="text-xs text-gray-500">Trade, Finance & Industry</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900">DFIs</h3>
+                    <p class="text-xs text-gray-500">Development Finance</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900">Investors</h3>
+                    <p class="text-xs text-gray-500">PE & Institutional Funds</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900">Corporates</h3>
+                    <p class="text-xs text-gray-500">Multinational Companies</p>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="bg-gray-50 rounded-3xl p-8 text-center">
+                <p class="text-5xl md:text-6xl font-black text-amber-600 font-['Playfair_Display']">200</p>
+                <p class="font-bold text-gray-900 uppercase tracking-wider mt-2">In-Person Delegates</p>
+                <p class="text-sm text-gray-500">Limited for quality engagement</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Overview -->
+    <section id="program" class="py-16 md:py-24 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <p class="text-xs font-bold text-amber-600 uppercase tracking-[0.3em] mb-3">Program</p>
+                <h2 class="text-2xl md:text-4xl font-black text-gray-900 font-['Playfair_Display']">Three Days of <span class="text-amber-600">Impact</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="w-10 h-10 bg-amber-600 text-white font-bold rounded-lg flex items-center justify-center">1</span>
+                        <div>
+                            <p class="text-xs text-amber-600 font-bold uppercase">Day 1</p>
+                            <h3 class="font-bold text-gray-900">Policy & Capital</h3>
+                        </div>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li>• Opening Ministerial Plenary</li>
+                        <li>• Trade & AfCFTA Implementation</li>
+                        <li>• Blended Finance</li>
+                        <li>• Infrastructure Development</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="w-10 h-10 bg-amber-600 text-white font-bold rounded-lg flex items-center justify-center">2</span>
+                        <div>
+                            <p class="text-xs text-amber-600 font-bold uppercase">Day 2</p>
+                            <h3 class="font-bold text-gray-900">Investment Deep Dives</h3>
+                        </div>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li>• Parallel Sector Tracks</li>
+                        <li>• Project Pitch Forum</li>
+                        <li>• Deal Rooms Open</li>
+                        <li>• Gala Dinner</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="w-10 h-10 bg-amber-600 text-white font-bold rounded-lg flex items-center justify-center">3</span>
+                        <div>
+                            <p class="text-xs text-amber-600 font-bold uppercase">Day 3</p>
+                            <h3 class="font-bold text-gray-900">Deal-Making</h3>
+                        </div>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li>• B2B Meetings</li>
+                        <li>• Site Visits</li>
+                        <li>• Investment Commitments</li>
+                        <li>• Closing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <a href="program.html" class="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white font-bold uppercase tracking-wider text-xs rounded-full hover:bg-amber-600 transition">
+                    View Full Agenda
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                 </a>
             </div>
         </div>
-
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-4 text-[#1A1A1A]/30">
-            
-            <div class="w-px h-20 bg-gradient-to-b from-[#1A1A1A]/30 to-transparent"></div>
-        </div>
     </section>
 
-    <!-- Video Section -->
-    <section id="video-section" class="py-24 bg-gray-50 px-6">
-        <div class="max-w-[1400px] mx-auto">
-            <div class="text-center mb-16">
-                <p class="text-xs font-bold text-[#d97706] uppercase tracking-[0.4em] mb-4">Official Trailer</p>
-                <h2 class="text-4xl font-bold text-[#1A1A1A] font-['Playfair_Display']">Experience the Vision</h2>
-            </div>
-            <div class="video-container relative aspect-video rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-black">
-                <video class="w-full h-full" style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" controls preload="auto" poster="../slide.jpg" playsinline>
-                    <source src="../video.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-    </section>
-
-    <!-- Previous Event Video Section -->
-    <section id="previous-event" class="py-24 bg-white px-6">
-        <div class="max-w-[1400px] mx-auto">
-            <div class="text-center mb-16">
-                <p class="text-xs font-bold text-[#d97706] uppercase tracking-[0.4em] mb-4">Previous Event</p>
-                <h2 class="text-4xl font-bold text-[#1A1A1A] font-['Playfair_Display']">Previous Event In Zimbabwe</h2>
-            </div>
-            <div class="video-container relative aspect-video rounded-3xl overflow-hidden shadow-2xl border-8 border-gray-100 bg-black">
-                <video class="w-full h-full" style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" controls preload="auto" playsinline>
-                    <source src="../video2.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-24 md:py-32 px-6 bg-white">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div class="relative">
-                <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-                    <img src="../slide.jpg" alt="About USCAATIGS" class="w-full h-full object-cover transition-all duration-1000">
-                </div>
-                <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-[#d97706] rounded-3xl -z-10 hidden md:block"></div>
-                <div class="absolute top-10 -left-10 p-8 bg-white shadow-2xl rounded-2xl max-w-[200px] hidden md:block">
-                    <p class="text-3xl font-black text-[#1A1A1A] mb-2 font-['Playfair_Display']">2026</p>
-                    <p class="text-xs font-bold text-[#666666] uppercase tracking-widest">Year of Transformation</p>
-                </div>
-            </div>
-            
-            <div>
-                <p class="text-xs font-bold text-[#d97706] uppercase tracking-[0.4em] mb-6">Summit Overview</p>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#1A1A1A] tracking-tighter mb-8 font-['Playfair_Display'] leading-[1.1]">
-                    The Strategic Gateway to <span class="text-[#d97706]">Global Prosperity</span>.
-                </h2>
-                <div class="space-y-6 text-lg text-[#444444] leading-relaxed">
-                    <p>
-                        USCAATIGS 2026 is a landmark global event designed to catalyze trade and investment between the United States, Canada, and Africa. We bring together heads of state, CEOs, and visionaries to forge sustainable economic partnerships.
-                    </p>
-                    <p class="font-bold text-[#1A1A1A]">
-                        Our mission is to create a dynamic ecosystem where capital meets opportunity, and innovation meets industrialization.
-                    </p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                    <div class="border-t-2 border-gray-100 pt-6">
-                        <p class="text-sm font-bold text-[#1A1A1A] uppercase tracking-widest mb-2">United States</p>
-                        <p class="text-sm text-[#666666]">Leveraging American technology and venture capital.</p>
-                    </div>
-                    <div class="border-t-2 border-gray-100 pt-6">
-                        <p class="text-sm font-bold text-[#1A1A1A] uppercase tracking-widest mb-2">Canada</p>
-                        <p class="text-sm text-[#666666]">Expanding trade corridors and resource management.</p>
-                    </div>
-                    <div class="border-t-2 border-gray-100 pt-6">
-                        <p class="text-sm font-bold text-[#1A1A1A] uppercase tracking-widest mb-2">Africa</p>
-                        <p class="text-sm text-[#666666]">Unlocking emerging markets and industrial potential.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Attend Section -->
-    <section id="why-attend" class="py-24 bg-gray-50 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <p class="text-xs font-bold text-[#d97706] uppercase tracking-[0.4em] mb-4">Why Attend</p>
-                <h2 class="text-4xl font-bold text-[#1A1A1A] font-['Playfair_Display']">Join the Conversation</h2>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 hover:-translate-y-2 transition-transform duration-500">
-                    <div class="w-14 h-14 bg-[#d97706]/10 rounded-2xl flex items-center justify-center mb-8">
-                        <svg class="w-6 h-6 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[#1A1A1A] mb-4">Networking</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed">Connect with global leaders and potential partners from three continents.</p>
-                </div>
-                <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 hover:-translate-y-2 transition-transform duration-500">
-                    <div class="w-14 h-14 bg-[#d97706]/10 rounded-2xl flex items-center justify-center mb-8">
-                        <svg class="w-6 h-6 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.364-6.364l-.707-.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M12 7a5 5 0 015 5 5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[#1A1A1A] mb-4">Insights</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed">Gain valuable market intelligence and discover emerging tri-continental trends.</p>
-                </div>
-                <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 hover:-translate-y-2 transition-transform duration-500">
-                    <div class="w-14 h-14 bg-[#d97706]/10 rounded-2xl flex items-center justify-center mb-8">
-                        <svg class="w-6 h-6 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[#1A1A1A] mb-4">Growth</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed">Discover new business and high-yield investment opportunities in emerging markets.</p>
-                </div>
-                <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 hover:-translate-y-2 transition-transform duration-500">
-                    <div class="w-14 h-14 bg-[#d97706]/10 rounded-2xl flex items-center justify-center mb-8">
-                        <svg class="w-6 h-6 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[#1A1A1A] mb-4">Knowledge</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed">Learn from expert speakers and thought leaders across diverse industrial sectors.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Key Opportunities Section -->
-    <section id="opportunities" class="py-24 bg-white px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <p class="text-xs font-bold text-[#d97706] uppercase tracking-[0.4em] mb-6">Investment Horizons</p>
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#1A1A1A] tracking-tighter mb-8 font-['Playfair_Display']">Sector Specific <br>Opportunities</h2>
-                    <p class="text-lg text-gray-600 mb-12">We focus on high-growth sectors that are critical for tri-continental economic integration.</p>
-                    
-                    <div class="space-y-4">
-                        <div class="flex gap-6 p-6 rounded-2xl hover:bg-gray-50 transition-colors">
-                            <div class="text-[#d97706] font-bold text-xl">01</div>
-                            <div>
-                                <h4 class="font-bold text-[#1A1A1A] mb-2">Technology & Innovation</h4>
-                                <p class="text-sm text-gray-500">Digital transformation, FinTech, and AI infrastructure development.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6 p-6 rounded-2xl hover:bg-gray-50 transition-colors">
-                            <div class="text-[#d97706] font-bold text-xl">02</div>
-                            <div>
-                                <h4 class="font-bold text-[#1A1A1A] mb-2">Agriculture & Agribusiness</h4>
-                                <p class="text-sm text-gray-500">Sustainable farming, food security, and agro-processing value chains.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6 p-6 rounded-2xl hover:bg-gray-50 transition-colors">
-                            <div class="text-[#d97706] font-bold text-xl">03</div>
-                            <div>
-                                <h4 class="font-bold text-[#1A1A1A] mb-2">Energy & Infrastructure</h4>
-                                <p class="text-sm text-gray-500">Renewable energy solutions and strategic transportation corridors.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative">
-                    <div class="aspect-square rounded-full border-[15px] sm:border-[30px] border-gray-50 absolute inset-0 animate-spin-slow"></div>
-                    <div class="aspect-square rounded-3xl overflow-hidden relative z-10 shadow-2xl scale-75 sm:scale-90">
-                        <img src="../slide3.jpg" alt="Opportunities" class="w-full h-full object-cover">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Hosting Entities -->
-    <section class="py-24 bg-gray-50 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <p class="text-xs font-bold text-[#d97706] uppercase tracking-[0.4em] mb-4">Leadership & Vision</p>
-                <h2 class="text-4xl font-bold text-[#1A1A1A] font-['Playfair_Display']">The Organizations Behind the Summit</h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- USAfriTrade -->
-                <div class="bg-white p-12 rounded-3xl shadow-sm border border-gray-100">
-                    <img src="../usaafrica.jpg" alt="USAfriTrade" class="h-16 w-auto mb-8">
-                    <h3 class="text-2xl font-bold text-[#1A1A1A] mb-6 font-['Playfair_Display']">U.S.-Africa Trade Commission</h3>
-                    <p class="text-gray-600 leading-relaxed mb-8">
-                        The U.S.-Africa Trade Commission (USAfriTrade) is dedicated to strengthening trade and investment relationships between the United States and African nations. Through policy advocacy and strategic partnerships, USAfriTrade facilitates sustainable economic growth across the continent.
-                    </p>
-                    <div class="flex items-center gap-3 text-[#d97706] font-bold text-sm uppercase tracking-widest">
-                        <span>Core Partner</span>
-                        <div class="w-12 h-px bg-[#d97706]"></div>
-                    </div>
-                </div>
-
-                <!-- ATESCA -->
-                <div class="bg-white p-12 rounded-3xl shadow-sm border border-gray-100">
-                    <img src="../atescalogo.jpg" alt="ATESCA" class="h-12 w-auto mb-8">
-                    <h3 class="text-2xl font-bold text-[#1A1A1A] mb-6 font-['Playfair_Display']">ATESCA Canada</h3>
-                    <p class="text-gray-600 leading-relaxed mb-8">
-                        Africa Trade Export & Supermarket Canada (ATESCA) works to expose the rich culture of Africa through strategic trade collaboration with Canada, generating foreign exchange and tackling economic challenges while ensuring food security.
-                    </p>
-                    <div class="flex items-center gap-3 text-[#b45309] font-bold text-sm uppercase tracking-widest">
-                        <span>Strategic Partner</span>
-                        <div class="w-12 h-px bg-[#b45309]"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Leadership Section -->
-    <section id="contacts" class="py-24 bg-white px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <p class="text-xs font-bold text-[#d97706] uppercase tracking-[0.4em] mb-4">Summit Leadership</p>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#1A1A1A] tracking-tighter font-['Playfair_Display']">Executive Committee</h2>
-                <div class="w-20 h-1 bg-[#d97706] mx-auto mt-8"></div>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Dr. Olufemi Adegun -->
-                <div class="executive-card group">
-                    <div class="executive-image-wrapper aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
-                        <img src="../dr.jpg" alt="Dr. Olufemi Adegun" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="font-bold text-[#1A1A1A] text-xl mb-1">Dr. Olufemi Adegun</h4>
-                        <p class="text-xs font-bold text-[#d97706] uppercase tracking-[0.2em] mb-4">USCAATIGS Chair</p>
-                        <a href="tel:+16475304037" class="text-sm text-gray-400 hover:text-[#1A1A1A] transition-colors">+1 647 530 4037</a>
-                    </div>
-                </div>
-
-                <!-- Titus Olowokere -->
-                <div class="executive-card group">
-                    <div class="executive-image-wrapper aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
-                        <img src="../titus.jpg" alt="Titus Olowokere" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="font-bold text-[#1A1A1A] text-xl mb-1">Titus Olowokere</h4>
-                        <p class="text-xs font-bold text-[#d97706] uppercase tracking-[0.2em] mb-4">USCAATIGS Co-Chair</p>
-                        <a href="tel:+14049394030" class="text-sm text-gray-400 hover:text-[#1A1A1A] transition-colors">+1 404 939 4030</a>
-                    </div>
-                </div>
-
-                <!-- Pauline Chiripayanga -->
-                <div class="executive-card group">
-                    <div class="executive-image-wrapper aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
-                        <img src="../pauline.jpg" alt="Pauline Chiripayanga" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="font-bold text-[#1A1A1A] text-xl mb-1">Pauline Chiripayanga</h4>
-                        <p class="text-xs font-bold text-[#d97706] uppercase tracking-[0.2em] mb-4">USCAATIGS Project Coordinator</p>
-                        <a href="tel:+263778336271" class="text-sm text-gray-400 hover:text-[#1A1A1A] transition-colors">+263 778336271</a>
-                    </div>
-                </div>
-
-                <!-- Kumesh Degene -->
-                <div class="executive-card group">
-                    <div class="executive-image-wrapper aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
-                        <img src="../kumesh_d.jpg" alt="Kumesh Degene" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="font-bold text-[#1A1A1A] text-xl mb-1">Kumesh Degene</h4>
-                        <p class="text-xs font-bold text-[#d97706] uppercase tracking-[0.2em] mb-4">USCAATIGS Local Organizing Commitee (LOC) Coordinator</p>
-                        <a href="tel:+251911338149" class="text-sm text-gray-400 hover:text-[#1A1A1A] transition-colors">+251 91 133 8149</a>
-                    </div>
-                </div>
+    <!-- CTA Section -->
+    <section class="py-16 px-4 bg-amber-600">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-2xl md:text-3xl font-black text-white font-['Playfair_Display'] mb-4">Ready to Join?</h2>
+            <p class="text-amber-100 mb-6">Secure your place at USCAATIGS 2026</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="registration.html" class="px-6 py-3 bg-white text-amber-600 font-bold uppercase tracking-wider text-xs rounded-full hover:bg-gray-100 transition">Register Now</a>
+                <a href="sponsors.html" class="px-6 py-3 border-2 border-white text-white font-bold uppercase tracking-wider text-xs rounded-full hover:bg-white hover:text-amber-600 transition">Become a Sponsor</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#1A1A1A] text-white py-20 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-4 gap-12 mb-16">
-                <div class="col-span-1 md:col-span-1">
-                    <h4 class="text-xl font-bold text-white mb-2 font-['Playfair_Display']">USCAATIGS <span class="text-[#d97706]">2026</span></h4>
-                    <p class="text-[10px] font-bold text-[#d97706] uppercase tracking-widest mb-6">United States, Canada, Africa Trade & Investment Global Summit</p>
-                    <p class="text-white text-sm leading-relaxed">
-                        The premier global summit connecting the United States, Canada, and Africa through strategic trade and investment.
-                    </p>
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h4 class="text-xl font-bold font-['Playfair_Display'] mb-2">USCAATIGS <span class="text-amber-500">2026</span></h4>
+                    <p class="text-xs text-gray-400">United States, Canada, Africa Trade & Investment Global Summit</p>
                 </div>
                 <div>
-                    <h4 class="text-sm font-bold text-white uppercase tracking-widest mb-6">Summit Details</h4>
-                    <ul class="space-y-4 text-sm">
-                        <li class="flex items-center gap-3 text-white">
-                            <svg class="w-4 h-4 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                            </svg>
-                            August 20–22, 2026
-                        </li>
-                        <li class="flex items-center gap-3 text-white">
-                            <svg class="w-4 h-4 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                            Addis Ababa, Ethiopia
-                        </li>
+                    <h4 class="text-sm font-bold uppercase tracking-wider mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="index.html" class="hover:text-amber-500">Home</a></li>
+                        <li><a href="program.html" class="hover:text-amber-500">Program</a></li>
+                        <li><a href="sponsors.html" class="hover:text-amber-500">Sponsors</a></li>
+                        <li><a href="faq.html" class="hover:text-amber-500">FAQ</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-sm font-bold text-white uppercase tracking-widest mb-6">Quick Links</h4>
-                    <ul class="space-y-4 text-sm text-white">
-                        <li><a href="#hero" class="text-white hover:text-[#d97706] transition-colors">Home</a></li>
-                        <li><a href="#about" class="text-white hover:text-[#d97706] transition-colors">About</a></li>
-                        <li><a href="#video-section" class="text-white hover:text-[#d97706] transition-colors">Video</a></li>
-                        <li><a href="#contacts" class="text-white hover:text-[#d97706] transition-colors">Leadership</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-sm font-bold text-white uppercase tracking-widest mb-6">Connect</h4>
-                    <a href="mailto:uscaatigs26@gmail.com" class="text-white hover:text-[#d97706] transition-colors block mb-6">uscaatigs26@gmail.com</a>
-                    <div class="flex gap-4">
-                        <a href="https://www.facebook.com/share/1AfimDpBQ7/" target="_blank" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#d97706] transition-all duration-300 group">
-                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.instagram.com/uscaatigs26?igsh=MWppMzJxaGFudTNjNQ==" target="_blank" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#d97706] transition-all duration-300 group">
-                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c.796 0 1.441.645 1.441 1.44s-.645 1.44-1.441 1.44c-.795 0-1.439-.645-1.439-1.44s.644-1.44 1.439-1.44z"/>
-                            </svg>
-                        </a>
-                    </div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider mb-4">Contact</h4>
+                    <p class="text-sm text-gray-400">info@usafricatrade.org</p>
+                    <p class="text-sm text-gray-400">+1 404 939 4030</p>
                 </div>
             </div>
-            <div class="border-t border-white/10 pt-8 text-center">
-                <p class="text-white text-xs tracking-widest uppercase">© 2026 USCAATIGS. All rights reserved.</p>
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-xs text-gray-500 uppercase tracking-wider">© 2026 USCAATIGS. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
     <script src="script.js"></script>
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            
+            menu.classList.toggle('hidden');
+            
+            if (menu.classList.contains('hidden')) {
+                icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            } else {
+                icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        }
+    </script>
 </body>
 </html>

@@ -8,6 +8,79 @@
     animation: spin-slow 20s linear infinite;
 }
 
+/* Responsive Mobile Menu Styles */
+#mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+/* Touch-friendly button improvements */
+@media (hover: none) and (pointer: coarse) {
+    .executive-card:hover {
+        transform: none;
+    }
+    
+    a, button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* Improved mobile spacing */
+@media (max-width: 640px) {
+    .section-premium {
+        padding: 40px 0;
+    }
+    
+    h1 {
+        font-size: 2rem !important;
+    }
+    
+    h2 {
+        font-size: 1.5rem !important;
+    }
+    
+    .btn-summit-primary,
+    .btn-summit-outline {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.75rem;
+    }
+    
+    .executive-card {
+        margin-bottom: 1rem;
+    }
+    
+    /* Improve touch targets */
+    .faq-toggle {
+        padding: 1rem;
+    }
+    
+    nav a, nav button {
+        padding: 0.75rem 0.5rem;
+    }
+}
+
+/* Tablet responsiveness */
+@media (min-width: 641px) and (max-width: 768px) {
+    .section-premium {
+        padding: 60px 0;
+    }
+    
+    h1 {
+        font-size: 2.5rem !important;
+    }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
 /* ========================================
    Conference Specific Premium Styles
    ======================================== */

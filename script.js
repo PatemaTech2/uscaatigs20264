@@ -5,21 +5,40 @@ gsap.registerPlugin(ScrollTrigger);
 function toggleMobileMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
     const menuBtn = document.getElementById('mobile-menu-btn');
+    
+    if (!menuBtn) return;
+    
     const spans = menuBtn.querySelectorAll('span');
     
-    mobileMenu.classList.toggle('hidden');
-    
-    // Animate hamburger to X
-    if (!mobileMenu.classList.contains('hidden')) {
-        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-        spans[1].style.opacity = '0';
-        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-    } else {
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
+    if (mobileMenu) {
+        mobileMenu.classList.toggle('hidden');
+        
+        // Animate hamburger to X
+        if (!mobileMenu.classList.contains('hidden')) {
+            if (spans[0]) spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+            if (spans[1]) spans[1].style.opacity = '0';
+            if (spans[2]) spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+        } else {
+            if (spans[0]) spans[0].style.transform = 'none';
+            if (spans[1]) spans[1].style.opacity = '1';
+            if (spans[2]) spans[2].style.transform = 'none';
+        }
     }
 }
+
+// Responsive: Close mobile menu on window resize
+window.addEventListener('resize', () => {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    
+    if (window.innerWidth >= 768 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        const spans = menuBtn ? menuBtn.querySelectorAll('span') : [];
+        if (spans[0]) spans[0].style.transform = 'none';
+        if (spans[1]) spans[1].style.opacity = '1';
+        if (spans[2]) spans[2].style.transform = 'none';
+    }
+});
 
 // Hero Animations
 const heroTimeline = gsap.timeline();
@@ -127,3 +146,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program | USCAATIGS 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        html { scroll-behavior: smooth; }
+        
+        @media (max-width: 640px) {
+            h1 { font-size: 1.75rem !important; }
+            h2 { font-size: 1.5rem !important; }
+            .section-padding { padding: 3rem 1rem !important; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300">
+        <div class="bg-white/95 backdrop-blur-md shadow-lg mx-2 mt-2 rounded-2xl">
+            <div class="max-w-7xl mx-auto px-3 py-3 flex justify-between items-center">
+                <a href="index.html" class="flex items-center gap-2">
+                    <img src="../ucalogo.jpg" alt="USCAATIGS Logo" class="h-8 sm:h-10 w-auto">
+                    <span class="text-lg sm:text-xl font-black tracking-tight text-gray-900 font-['Playfair_Display']">USCAATIGS <span class="text-amber-600">2026</span></span>
+                </a>
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="index.html" class="text-xs font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600">Home</a>
+                    <a href="#agenda" class="text-xs font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600">Agenda</a>
+                    <a href="sponsors.html" class="text-xs font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600">Sponsors</a>
+                    <a href="faq.html" class="text-xs font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600">FAQ</a>
+                    <a href="registration.html" class="px-4 py-2 bg-amber-600 text-white text-xs font-bold uppercase tracking-wider rounded-full hover:bg-amber-700">Register</a>
+                </div>
+                <button onclick="toggleMenu()" class="lg:hidden p-2">
+                    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white mx-2 rounded-b-2xl shadow-lg">
+            <div class="px-4 py-4 flex flex-col gap-2">
+                <a href="index.html" class="text-sm font-bold uppercase text-gray-700 py-2">Home</a>
+                <a href="#agenda" class="text-sm font-bold uppercase text-gray-700 py-2">Agenda</a>
+                <a href="sponsors.html" class="text-sm font-bold uppercase text-gray-700 py-2">Sponsors</a>
+                <a href="faq.html" class="text-sm font-bold uppercase text-gray-700 py-2">FAQ</a>
+                <a href="registration.html" class="mt-2 px-4 py-3 bg-amber-600 text-white text-sm font-bold uppercase rounded-full text-center">Register</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="h-20"></div>
+
+    <!-- Header -->
+    <section class="py-12 md:py-20 bg-gray-900 text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="text-xs font-bold text-amber-500 uppercase tracking-[0.3em] mb-3">Program</p>
+            <h1 class="text-3xl md:text-5xl font-black font-['Playfair_Display']">Summit <span class="text-amber-500">Agenda</span></h1>
+        </div>
+    </section>
+
+    <!-- Day 1 -->
+    <section id="agenda" class="py-12 md:py-16 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center gap-4 mb-8">
+                <span class="w-12 h-12 bg-amber-600 text-white font-bold text-xl rounded-xl flex items-center justify-center">1</span>
+                <div>
+                    <p class="text-xs text-amber-600 font-bold uppercase">August 20, 2026</p>
+                    <h2 class="text-xl md:text-2xl font-bold text-gray-900">Policy, Capital & Market Direction</h2>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                        <div class="md:w-40 text-amber-600 font-bold text-sm">8:00 - 9:00 AM</div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Registration & Welcome Coffee</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                        <div class="md:w-40 text-amber-600 font-bold text-sm">9:00 - 10:30 AM</div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Opening Ministerial Plenary</h3>
+                            <p class="text-sm text-gray-600">Keynote addresses from Ministers of Trade, Finance, and Industry</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                        <div class="md:w-40 text-amber-600 font-bold text-sm">11:00 - 12:30 PM</div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Trade & AfCFTA Implementation</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                        <div class="md:w-40 text-amber-600 font-bold text-sm">2:00 - 3:30 PM</div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Blended Finance & Risk Mitigation</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                        <div class="md:w-40 text-amber-600 font-bold text-sm">4:00 - 5:30 PM</div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Infrastructure & Corridor Development</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                        <div class="md:w-40 text-amber-600 font-bold text-sm">7:00 - 9:00 PM</div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Welcome Reception</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 2 -->
+    <section class="py-12 md:py-16 px-4 bg-gray-100">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center gap-4 mb-8">
+                <span class="w-12 h-12 bg-amber-600 text-white font-bold text-xl rounded-xl flex items-center justify-center">2</span>
+                <div>
+                    <p class="text-xs text-amber-600 font-bold uppercase">August 21, 2026</p>
+                    <h2 class="text-xl md:text-2xl font-bold text-gray-900">Sector Investment Deep Dives</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div class="bg-amber-50 p-4 rounded-xl">
+                    <p class="font-bold text-amber-700">Energy & Transition</p>
+                </div>
+                <div class="bg-amber-50 p-4 rounded-xl">
+                    <p class="font-bold text-amber-700">Mining & Critical Minerals</p>
+                </div>
+                <div class="bg-amber-50 p-4 rounded-xl">
+                    <p class="font-bold text-amber-700">Agribusiness & Processing</p>
+                </div>
+                <div class="bg-amber-50 p-4 rounded-xl">
+                    <p class="font-bold text-amber-700">Manufacturing</p>
+                </div>
+                <div class="bg-amber-50 p-4 rounded-xl">
+                    <p class="font-bold text-amber-700">Digital Economy</p>
+                </div>
+                <div class="bg-amber-50 p-4 rounded-xl">
+                    <p class="font-bold text-amber-700">Healthcare & Pharma</p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm">
+                    <h3 class="font-bold text-gray-900 mb-2">Investor & Project Pitch Forum</h3>
+                    <p class="text-sm text-gray-600">Pre-screened African projects present to investors</p>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm">
+                    <h3 class="font-bold text-gray-900 mb-2">Sector Deal Rooms</h3>
+                    <p class="text-sm text-gray-600">Pre-scheduled 1-on-1 meetings</p>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm">
+                    <h3 class="font-bold text-gray-900 mb-2">Gala Dinner</h3>
+                    <p class="text-sm text-gray-600">7:00 PM - Awards & Cultural Experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 3 -->
+    <section class="py-12 md:py-16 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center gap-4 mb-8">
+                <span class="w-12 h-12 bg-amber-600 text-white font-bold text-xl rounded-xl flex items-center justify-center">3</span>
+                <div>
+                    <p class="text-xs text-amber-600 font-bold uppercase">August 22, 2026</p>
+                    <h2 class="text-xl md:text-2xl font-bold text-gray-900">Deal Rooms & Site Visits</h2>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-gray-900">Deal Room Sessions</h3>
+                    <p class="text-sm text-gray-600">Final investor-project sponsor meetings</p>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-gray-900">Industrial Park Site Visits</h3>
+                    <p class="text-sm text-gray-600">Optional visits to strategic locations</p>
+                </div>
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-gray-900">Closing & Investment Commitments</h3>
+                    <p class="text-sm text-gray-600">Announcement of key partnerships</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-12 md:py-16 bg-gray-900 text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-2xl md:text-3xl font-black font-['Playfair_Display'] mb-4">Ready to Join?</h2>
+            <p class="text-gray-400 mb-6">Secure your place at USCAATIGS 2026</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="registration.html" class="px-6 py-3 bg-amber-600 text-white font-bold uppercase tracking-wider text-sm rounded-full hover:bg-amber-700">Register Now</a>
+                <a href="sponsors.html" class="px-6 py-3 border-2 border-white text-white font-bold uppercase tracking-wider text-sm rounded-full hover:bg-white hover:text-gray-900">Become a Sponsor</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-xs text-gray-500 uppercase">© 2026 USCAATIGS. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
