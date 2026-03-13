@@ -10,103 +10,86 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .font-playfair { font-family: 'Playfair Display', serif; }
+        html { scroll-behavior: smooth; }
+        @media (max-width: 640px) {
+            h1 { font-size: 1.75rem !important; }
+            h2 { font-size: 1.5rem !important; }
+        }
     </style>
 </head>
 <body class="bg-gray-50 overflow-x-hidden">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 px-4 sm:px-6 py-4 transition-all duration-500 bg-white/90 backdrop-blur-md shadow-lg">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <a href="index.html"><img src="../ucalogo.jpg" alt="USCAATIGS Logo" class="h-10 sm:h-12 w-auto"></a>
-                <div class="flex flex-col justify-center">
-                    <span class="text-lg sm:text-2xl font-black tracking-tighter text-gray-900 font-['Playfair_Display'] leading-none"><a href="index.html">USCAATIGS <span class="text-amber-600">2026</span></a></span>
+    <nav class="fixed w-full z-50">
+        <div class="bg-white/95 backdrop-blur-md shadow-lg mx-2 mt-2 rounded-2xl">
+            <div class="max-w-7xl mx-auto px-3 py-3 flex justify-between items-center">
+                <a href="index.html" class="flex items-center gap-2">
+                    <img src="../ucalogo.jpg" alt="USCAATIGS Logo" class="h-8 sm:h-10 w-auto">
+                    <span class="text-lg sm:text-xl font-black tracking-tight text-gray-900 font-['Playfair_Display']">USCAATIGS <span class="text-amber-600">2026</span></span>
+                </a>
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="index.html" class="text-xs font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600">Home</a>
+                    <a href="program.html" class="text-xs font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600">Program</a>
+                    <a href="sponsors.html" class="text-xs font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600">Sponsors</a>
+                    <a href="faq.html" class="text-xs font-bold uppercase tracking-wider text-gray-700 hover:text-amber-600">FAQ</a>
+                    <a href="registration.html" class="px-4 py-2 bg-amber-600 text-white text-xs font-bold uppercase tracking-wider rounded-full hover:bg-amber-700">Register</a>
                 </div>
+                <button onclick="toggleMenu()" class="lg:hidden p-2">
+                    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
             </div>
-            <div class="hidden md:flex items-center gap-6">
-                <a href="index.html" class="text-xs sm:text-sm font-bold uppercase tracking-widest text-gray-900 hover:text-amber-600">Home</a>
-                <a href="contact.html" class="text-xs sm:text-sm font-bold uppercase tracking-widest text-gray-900 hover:text-amber-600">Contact</a>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white mx-2 rounded-b-2xl shadow-lg">
+            <div class="px-4 py-4 flex flex-col gap-2">
+                <a href="index.html" class="text-sm font-bold uppercase text-gray-700 py-2">Home</a>
+                <a href="program.html" class="text-sm font-bold uppercase text-gray-700 py-2">Program</a>
+                <a href="sponsors.html" class="text-sm font-bold uppercase text-gray-700 py-2">Sponsors</a>
+                <a href="faq.html" class="text-sm font-bold uppercase text-gray-700 py-2">FAQ</a>
+                <a href="registration.html" class="mt-2 px-4 py-3 bg-amber-600 text-white text-sm font-bold uppercase rounded-full text-center">Register</a>
             </div>
         </div>
     </nav>
 
-    <div class="h-24"></div>
+    <div class="h-20"></div>
 
-    <!-- Page Header -->
-    <section class="py-16 bg-gray-900 text-white">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h1 class="text-4xl sm:text-5xl font-black tracking-tighter font-['Playfair_Display']">Privacy <span class="text-amber-500">Policy</span></h1>
+    <!-- Header -->
+    <section class="py-12 md:py-20 bg-gray-900 text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h1 class="text-3xl md:text-5xl font-black font-['Playfair_Display']">Privacy <span class="text-amber-500">Policy</span></h1>
         </div>
     </section>
 
     <!-- Content -->
-    <section class="py-20 px-6">
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-lg">
-                <p class="text-gray-500 text-sm mb-8">Last updated: March 2026</p>
+    <section class="py-12 md:py-16 px-4">
+        <div class="max-w-3xl mx-auto">
+            <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                <p class="text-gray-600 mb-6">Last updated: January 2026</p>
 
-                <div class="space-y-8">
-                    <div>
-                        <h2 class="text-xl font-bold text-gray-900 mb-4">Data Collection</h2>
-                        <p class="text-gray-600 leading-relaxed">USCAATIGS collects personal data during the registration process, including name, organization, role, email address, phone number, and payment information. This data is used solely for summit operations, communication about the event, and facilitating business connections between attendees.</p>
-                    </div>
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Information We Collect</h2>
+                <p class="text-gray-600 mb-6">We collect personal information including name, email, company, job title, and payment information when you register for USCAATIGS 2026.</p>
 
-                    <div>
-                        <h2 class="text-xl font-bold text-gray-900 mb-4">Data Usage</h2>
-                        <p class="text-gray-600 leading-relaxed">Your personal data is used to:</p>
-                        <ul class="mt-4 space-y-2 text-gray-600">
-                            <li>• Process your registration and payment</li>
-                            <li>• Communicate summit updates and information</li>
-                            <li>• Facilitate B2B matchmaking and deal room scheduling</li>
-                            <li>• Provide access to summit materials and platform</li>
-                        </ul>
-                    </div>
+                <h2 class="text-xl font-bold text-gray-900 mb-4">How We Use Your Information</h2>
+                <p class="text-gray-600 mb-6">Your information is used to process registrations, communicate about the summit, and share relevant investment opportunities.</p>
 
-                    <div>
-                        <h2 class="text-xl font-bold text-gray-900 mb-4">Data Protection</h2>
-                        <p class="text-gray-600 leading-relaxed">We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. Financial information is processed via secure, PCI-compliant payment processors.</p>
-                    </div>
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Data Protection</h2>
+                <p class="text-gray-600 mb-6">We implement appropriate security measures to protect your personal information against unauthorized access.</p>
 
-                    <div>
-                        <h2 class="text-xl font-bold text-gray-900 mb-4">Third-Party Sharing</h2>
-                        <p class="text-gray-600 leading-relaxed">We do not share your personal data with third parties without your consent, except with service providers bound by confidentiality agreements who assist with summit operations. Delegate lists are shared only with explicit opt-in permission.</p>
-                    </div>
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Third-Party Sharing</h2>
+                <p class="text-gray-600 mb-6">We do not sell your personal information. We may share data with event partners for networking purposes with your consent.</p>
 
-                    <div>
-                        <h2 class="text-xl font-bold text-gray-900 mb-4">Cookies</h2>
-                        <p class="text-gray-600 leading-relaxed">We use cookies for website analytics (Google Analytics) to understand how visitors use our site. You can control cookies through your browser settings.</p>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-bold text-gray-900 mb-4">Your Rights</h2>
-                        <p class="text-gray-600 leading-relaxed">You have the right to access, correct, or delete your personal data. You may also opt-out of communications at any time. Contact privacy@uscaatigs2026.com to exercise these rights.</p>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-bold text-gray-900 mb-4">Data Retention</h2>
-                        <p class="text-gray-600 leading-relaxed">Personal data is retained for 5 years for institutional records and to facilitate participation in future USCAATIGS events.</p>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-bold text-gray-900 mb-4">Contact Us</h2>
-                        <p class="text-gray-600 leading-relaxed">For privacy-related inquiries, contact us at: <a href="mailto:privacy@uscaatigs2026.com" class="text-amber-600 hover:underline">privacy@uscaatigs2026.com</a></p>
-                    </div>
-                </div>
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Contact Us</h2>
+                <p class="text-gray-600">For privacy concerns, contact us at info@uscaatigs.com</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-gray-500 text-xs tracking-widest uppercase">© 2026 USCAATIGS. All rights reserved.</p>
-                <div class="flex gap-6 text-xs">
-                    <a href="refund-policy.html" class="text-gray-500 hover:text-amber-500">Refund Policy</a>
-                </div>
-            </div>
+    <footer class="bg-gray-900 text-white py-8 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-xs text-gray-500 uppercase">© 2026 USCAATIGS. All rights reserved.</p>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
